@@ -1,0 +1,30 @@
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* padding: 2rem; */
+}
+.header__title {
+  font: 50px/1 'Playfair Display SC', serif;
+}
+
+aside {
+  text-align: center;
+  padding: 10px 0;
+  border: solid black;
+  border-width: 2px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 90%;
+}
+
+aside > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: solid black;
+  border-width: 1px 0;
+  padding: 10px 0px;
+  font-family: 'EB Garamond', serif;
+}

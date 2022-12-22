@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/567707/paper_fibers.png');
+  font-size: 1.1rem;
+}
