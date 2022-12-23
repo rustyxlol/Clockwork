@@ -1,58 +1,111 @@
 import React, { useEffect, useState } from 'react';
 import './Main.css';
+import data from '../../../data/db.json';
+import { IconDetails } from '@tabler/icons';
 
 const Main = (props) => {
+  const selected_events = [];
+  const holidays = [];
+  const births = [];
+  const deaths = [];
+  const events = [];
+
+  for (let i = 0; i < 10; i++) {
+    const event_details = data.selected;
+    const event_title = event_details[i].pages[0].titles.normalized;
+    const event_description = event_details[i].pages[0].extract;
+    let event_image = '';
+    if (event_details[i].pages[0].hasOwnProperty('thumbnail')) {
+      event_image = event_details[i].pages[0].thumbnail.source;
+    }
+    selected_events.push({
+      title: event_title,
+      description: event_description,
+      img_url: event_image,
+    });
+  }
+
+  for (let i = 0; i < 10; i++) {
+    const holiday_details = data.holidays;
+    const holiday_title = holiday_details[i].text;
+    const holiday_description = holiday_details[i].pages[0].extract;
+    let holiday_image = '';
+    if (holiday_details[i].pages[0].hasOwnProperty('thumbnail')) {
+      holiday_image = holiday_details[i].pages[0].thumbnail.source;
+    }
+    holidays.push({
+      title: holiday_title,
+      description: holiday_description,
+      img_url: holiday_image,
+    });
+  }
+
+  for (let i = 0; i < 10; i++) {
+    const birth_details = data.births;
+    const birth_name = birth_details[i].pages[0].titles.normalized;
+    const birth_year = birth_details.year;
+    const birth_description = birth_details[i].pages[0].description;
+    let birth_image = '';
+    if (birth_details[i].pages[0].hasOwnProperty('thumbnail')) {
+      birth_image = birth_details[i].pages[0].thumbnail.source;
+    }
+    births.push({
+      title: birth_name,
+      description: birth_description,
+      birth_year: birth_year,
+      img_url: birth_image,
+    });
+  }
+
+  const mEvents = selected_events.slice(1).map((item) => {
+    return (
+      <div className="sub__content">
+        <h1 className="sub__title">{item.title}</h1>
+        <p className="sub__description">{item.description}</p>
+      </div>
+    );
+  });
+
+  const mHolidays = holidays.map((item) => {
+    return (
+      <div className="sidebar__content">
+        <h1 className="sidebar__title">{item.title}</h1>
+        {item.img_url && <img className="sidebar__image" src={item.img_url} />}
+        <p className="sidebar__description">{item.description}</p>
+      </div>
+    );
+  });
+
+  const mBirths = births.map((item) => {
+    return (
+      <div className="birth__content">
+        <h1 className="birth__title">{item.title}</h1>
+        {item.img_url && <img className="birth__image" src={item.img_url} />}
+        <p className="birth__description">{item.description}</p>
+      </div>
+    );
+  });
+
   return (
     <main>
       <div className="main__container">
-        <div className="main__content__one">
-          <h1 className="main__title">
-            Don't Ask, Don't Tell Repeal Act of 2010
-          </h1>
-          <p className="main__description">
-            The Don't Ask, Don't Tell Repeal Act of 2010 is a landmark United
-            States federal statute enacted in December 2010 that established a
-            process for ending the "don't ask, don't tell" (DADT) policy, thus
-            allowing gay, lesbian, and bisexual people to serve openly in the
-            United States Armed Forces. It ended the policy in place since 1993
-            that allowed them to serve only if they kept their sexual
-            orientation secret and the military did not learn of their sexual
-            orientation, which was controversial.
-          </p>
+        <div className="main__content">
+          <div className="main__content__one">
+            <div className="main_content_details">
+              <h1 className="main__title">{selected_events[0].title}</h1>
+              {selected_events[0].img_url && (
+                <img className="main__image" src={selected_events[0].img_url} />
+              )}
+              <p className="main__description">
+                {selected_events[0].description}
+              </p>
+            </div>
+          </div>
         </div>
+        <div className="sub__container">{mEvents}</div>
+        <div className="births__container">{mBirths}</div>
       </div>
-      <div className="sidebar__container">
-        <div className="sidebar__content_one">
-          <h1 className="sidebar__title">Dongzhi Festival</h1>
-          <img
-            src={
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/%E6%B1%A4%E5%9C%86_Cooked_Tang_Yuan_%28329781165%29.jpg/320px-%E6%B1%A4%E5%9C%86_Cooked_Tang_Yuan_%28329781165%29.jpg'
-            }
-            alt=""
-          />
-          <p className="sidebar__description">
-            The Dongzhi Festival or Winter Solstice Festival is one of the most
-            important Chinese festivals celebrated by the Mainland Chinese, Hong
-            Kong Chinese, Taiwan, Japanese, Vietnamese, Koreans and other East
-            Asian-related people during the Dongzhi solar term, some day between
-            December 21 to December 23.
-          </p>
-        </div>
-        <div className="sidebar__content_one">
-          <h1 className="sidebar__title">Armed Forces Day (Vietnam)</h1>
-          <img
-            src={
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Ilham_Aliyev_attended_the_parade_10.jpg/320px-Ilham_Aliyev_attended_the_parade_10.jpg'
-            }
-            alt=""
-          />
-          <p className="sidebar__description">
-            Many nations around the world observe some kind of Armed Forces Day
-            to honor their military forces. This day is not to be confused with
-            Veterans Day or Memorial Day
-          </p>
-        </div>
-      </div>
+      <div className="sidebar__container">{mHolidays}</div>
     </main>
   );
 };

@@ -23,6 +23,19 @@ main {
   text-align: justify;
 }
 
+.sub__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  text-align: justify;
+}
+
+.sub__title {
+  font: 25px 'EB Garamond', serif;
+  font-weight: 700;
+  margin: 0;
+}
+
 .main__container {
   flex: 3;
 }
@@ -32,15 +45,66 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border-left: 1px solid black;
+  padding-left: 1.2rem;
 }
 
 .sidebar__title {
-  font: 20px/1 'Playfair Display SC', serif;
+  font: 20px/1 serif;
   text-align: center;
-  font-weight: 900;
+  font-weight: bold;
 }
 
 .sidebar__description {
   font-family: 'EB Garamond', serif;
   text-align: justify;
+}
+
+.sidebar__container div:not(:first-child) {
+  border-top: 1px solid black;
+}
+
+.sidebar__image {
+  width: 100%;
+}
+
+.main__content__one {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sub__title {
+  margin: 0;
+}
+
+.main__image {
+  float: right;
+  padding: 1%;
+  width: 240px;
+  height: 240px;
+}
+
+.births__container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.birth__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+.birth__image {
+  max-width: 100%;
+  max-height: 200px;
+}
+
+.birth__title {
+  font: 20px/1 serif;
+  text-align: center;
+  font-weight: bold;
 }
