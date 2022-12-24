@@ -10,6 +10,16 @@ const Header = (props) => {
     })
   );
 
+  const full_date = props.date.toLocaleString('default', {
+    weekday: 'long',
+  });
+
+  const weekday = props.date.toLocaleString('default', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
   useEffect(() => {
     setInterval(() => {
       const time = new Date().toLocaleString('default', {
@@ -21,16 +31,6 @@ const Header = (props) => {
       setTime(time);
     }, 1000);
   }, []);
-
-  const full_date = props.date.toLocaleString('default', {
-    weekday: 'long',
-  });
-
-  const weekday = props.date.toLocaleString('default', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
 
   return (
     <div className="header__container">

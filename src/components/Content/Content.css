@@ -1,0 +1,21 @@
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main__container {
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.content__container {
+  display: flex;
+  flex: 3;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px 0px;
+}

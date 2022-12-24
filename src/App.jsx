@@ -1,21 +1,17 @@
-import './App.css';
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import DateInput from './components/Inputs/DateInput';
-import Header from './components/Navbar/Header';
-import Main from './components/Main/Main';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Content from './components/Content/Content';
+import './App.css';
 
 function App() {
   const [dateValue, setDateValue] = useState(new Date());
 
-  function handleDateChange(date) {
-    setDateValue(date);
-  }
-
   return (
     <div className="App">
       <Header date={dateValue} />
-      <Main />
+      <Content />
+      <Footer />
     </div>
   );
 }

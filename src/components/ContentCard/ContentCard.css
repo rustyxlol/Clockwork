@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  gap: 30px;
+}
+.card_details {
+  text-align: justify;
+  flex-grow: 1;
+  /* width: 300px; */
+}
+
+h1 {
+  margin: 0 0 10px 0;
+  text-align: left;
+  line-height: 1;
+  font-family: 'Playfair Display', serif;
+}
+
+p {
+  margin: 0;
+  font-family: 'EB Garamond', serif;
+}
+
+img {
+  margin-top: 10px;
+}

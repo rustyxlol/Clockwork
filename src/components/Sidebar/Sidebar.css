@@ -1,0 +1,15 @@
+.sidebar__container {
+  flex: 1;
+  /* height: 25vh; */
+}
+
+.sidebar__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0px;
+}
+
+button {
+  padding: 10px;
+}
